@@ -1,0 +1,48 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 10px 20px;
+}
+
+.navbar-left {
+    flex: 1; /* Take up remaining space on the left */
+    display: flex;
+    align-items: center;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    flex: 1; /* Take up remaining space on the right */
+    text-align: right;
+}
+
+.menu-center,
+.menu-right {
+    display: inline-block;
+}
+
+.choice {
+    margin: 0 10px;
+    color: black;
+    text-decoration: none;
+}
+
+/* Style the logo image */
+.navbar-left img {
+    max-height: 40px;
+}
+
+.hi-class {
+    padding-right: 64px;
+}
+
+h1 {
+    font-size: 64px;
+
+}

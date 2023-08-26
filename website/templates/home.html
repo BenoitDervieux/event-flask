@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align="center">List of events</h1>
+
+<ul class="list-group list-group-flush" id="notes">
+  {% for event in events %}
+  <li class="list-group-item">
+    {{ event.name }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <br />
+  <div align="center">
+    <a type="submit" class="btn btn-primary" href="/createevent">Add Event</a>
+  </div>
+</form>
+{% endblock %}
