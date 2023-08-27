@@ -1,5 +1,7 @@
 # Flask Web App Tutorial
 
+This original template has been taken from this video: https://www.youtube.com/watch?v=dam0GPOAvVI&t=143s
+
 ## Setup & Installation
 
 Make sure you have the latest version of Python installed.

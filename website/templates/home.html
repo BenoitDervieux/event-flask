@@ -5,10 +5,12 @@
 <ul class="list-group list-group-flush" id="notes">
   {% for event in events %}
   <li class="list-group-item">
-    {{ event.name }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+    <p>{{ event.name }}</p>
+    {% if user.id == event.id %}
+    <button type="button" class="close" onClick="deleteEvent({{ event.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>
