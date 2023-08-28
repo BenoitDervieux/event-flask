@@ -2,22 +2,41 @@
 %}
 <h1 align="center">List of events</h1>
 
-<ul class="list-group list-group-flush" id="notes">
+<ul class="" id="notes">
   {% for event in events %}
   <li class="list-group-item">
-    <p>{{ event.name }}</p>
+    <div class="cross-and-title">
+    <h2>{{ event.name }}</h2>
     {% if user.id == event.id %}
     <button type="button" class="close" onClick="deleteEvent({{ event.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
     {% endif %}
+    </div>
+    <p class='subtitle'>Description</p>
+    <p class='description'>{{ event.description }} </p>
+    <div class="place-and-time">
+      <div class='icon-text'>
+      <img src="static/location.png" alt="location" class='icon'>
+      <a class='subtitle'>Place</a>
+      </div>
+      <div class='icon-text'>
+      <img src="static/clock.png" alt="Time" class='icon'>
+      <a class='subtitle'>Date and Time</a>
+      </div>
+    </div>
+    <div class="place-and-time">
+    <p class='bottom'>{{ event.place }} </p>
+    <p class='bottom'>{{ event.date }} </p>
+    </div>
+    
   </li>
   {% endfor %}
 </ul>
 <form method="POST">
   <br />
   <div align="center">
-    <a type="submit" class="btn btn-primary" href="/createevent">Add Event</a>
+    <a type="submit" class="btn btn-primary add-event-button" href="/createevent">Add Event</a>
   </div>
 </form>
 {% endblock %}
