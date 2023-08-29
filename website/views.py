@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect
 from flask_login import login_required, current_user
 from datetime import datetime
-from .models import Note, Events
+from .models import Events
 from . import db
 import json
 
@@ -16,6 +16,14 @@ def home():
         print("Redirect to create event")
 
     return render_template("home.html", user=current_user, events=events)
+
+@views.route("/event/<int:event_id>", methods=['GET', 'POST'])
+@login_required
+def show_event(event_id):
+    event = Events.query.get(event_id)
+    participants = event.participants
+    participant_names = [participant.first_name for participant in participants]
+    return render_template("event.html", user=current_user, event=event, participants=participant_names)
 
 @views.route('/createevent', methods=['GET', 'POST'])
 @login_required
@@ -32,6 +40,8 @@ def create_event():
                            organizer_id=current_user.id, date=date,
                            place=place)
         db.session.add(new_event)
+        db.session.commit()
+        new_event.participants.append(current_user)
         db.session.commit()
         return redirect("/")
 

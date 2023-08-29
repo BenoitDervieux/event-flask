@@ -1,20 +1,20 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">List of events</h1>
+<h1 align="center">Games Planned</h1>
 
 <ul class="" id="notes">
   {% for event in events %}
-  <li class="list-group-item">
+  <li class="list-group-item" onClick="redirectToEvent({{event.id}})">
     <div class="cross-and-title">
     <h2>{{ event.name }}</h2>
-    {% if user.id == event.id %}
+    {% if user.id == event.organizer_id %}
     <button type="button" class="close" onClick="deleteEvent({{ event.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
     {% endif %}
     </div>
     <p class='subtitle'>Description</p>
-    <p class='description'>{{ event.description }} </p>
+    <p class='description truncate-text'>{{ event.description }} </p>
     <div class="place-and-time">
       <div class='icon-text'>
       <img src="static/location.png" alt="location" class='icon'>
@@ -29,6 +29,19 @@
     <p class='bottom'>{{ event.place }} </p>
     <p class='bottom'>{{ event.date }} </p>
     </div>
+    {% if participants is not none %}
+    <div class="place-and-time">
+      <div class='icon-text'>
+      <img src="static/people.png" alt="location" class='icon'>
+      <a class='subtitle'>Participants</a>
+      </div>
+    </div>
+    <div class="participants-class">
+    {% for participant in event.participants %}
+        <a class="participants-name"> {{ participant.first_name}} </a>
+    {% endfor %}
+    </div>
+    {% endif %}
     
   </li>
   {% endfor %}

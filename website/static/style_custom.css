@@ -4,6 +4,7 @@
     align-items: center;
     color: black;
     padding: 10px 20px;
+    margin: 1em;
 }
 
 .navbar-left {
@@ -35,7 +36,7 @@
 
 /* Style the logo image */
 .navbar-left img {
-    max-height: 40px;
+    max-height: 100px;
 }
 
 .hi-class {
@@ -44,6 +45,7 @@
 
 h1 {
     font-size: 64px;
+    margin: 0px;
 
 }
 
@@ -84,10 +86,18 @@ h1 {
   }
 
   li {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
     padding: 8px;
+    background-color: #fcfcfc;
+    transition: all 0.15s ease;
+    margin: 16px;
 
+  }
+  li:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    transition: all 0.15s ease;
   }
 
   .subtitle {
@@ -100,6 +110,7 @@ h1 {
   .description {
     padding: 0px 10px 0px 10px;
     margin: 0px;
+    color: rgba(0,0,0,0.76);
   }
 
   h3 {
@@ -111,10 +122,11 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 0px 10px 0px 10px;
+    color: rgba(0,0,0,0.76);
   }
 
   .bottom {
-   padding: 0px 0px 16px 0px;
+   padding: 0px 0px 0px 0px;
    margin: 0px;
   }
 
@@ -144,4 +156,31 @@ h1 {
   .icon {
     height: 20px;
     width: 20px;
+  }
+
+  .img {
+    max-height: 100px;
+  }
+
+  .truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+  }
+
+  .participants-class {
+    padding: 0px 10px 0px 10px;
+  }
+
+  .participants-name {
+    text-decoration: none;
+    margin: 0px;
+  }
+
+  .event-page-box {
+    margin: 2em;
+    padding: 1em;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
   }

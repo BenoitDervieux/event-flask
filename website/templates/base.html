@@ -11,7 +11,7 @@
     <nav class="navbar">
       <div class="navbar-left">
           <!-- Place your logo here -->
-          <img src="static/logo.png" alt="Logo">
+          <img class="logo" src="static/logo2.png" alt="Logo">
       </div>
       <div class="navbar-center">
           <div class="menu-center">
@@ -74,6 +74,10 @@
   }).then((_res) => {
     window.location.href = "/";
   });
+  }
+  function redirectToEvent(eventId) {
+    var url = "/event/" + eventId; // Replace with the actual URL pattern
+    window.location.href = url;
   }
 </script>
 {% endblock %}
