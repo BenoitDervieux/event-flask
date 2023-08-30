@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, request
 from flask_login import login_required, current_user
 from datetime import datetime
-from .models import Events
+from .models import Events, Comment
 from . import db
 import json
 
@@ -21,9 +21,18 @@ def home():
 @login_required
 def show_event(event_id):
     event = Events.query.get(event_id)
+    comments = Comment.query.filter_by(event_id=event_id).all()
     participants = event.participants
     participant_names = [participant.first_name for participant in participants]
-    return render_template("event.html", user=current_user, event=event, participants=participant_names)
+    if request.method == 'POST':
+        new_comment = Comment(description=request.form.get('comment'), date=datetime.utcnow(), user=current_user, event=event)
+        db.session.add(new_comment)
+        db.session.commit()
+        comments = Comment.query.filter_by(event_id=event_id).all()
+        return render_template("event.html", user=current_user, event=event, 
+                           participants=participant_names, comments=comments)
+    return render_template("event.html", user=current_user, event=event, 
+                           participants=participant_names, comments=comments)
 
 @views.route('/createevent', methods=['GET', 'POST'])
 @login_required

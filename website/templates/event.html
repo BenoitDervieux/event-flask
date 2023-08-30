@@ -13,7 +13,16 @@
     <p>{{participants[0]}}</p>
     {% endfor %}
     <h3>Comments</h3>
-    <p>Add the comment section here but for later</p>
+    {% for comment in comments %}
+    <p>{{comment.description }} </p>
+    {% endfor %}
+    <div class="div-comment">
+        <form method="POST">
+        <input type="textarea" class="comment-area" placeholder="Enter your comment here" name="comment" id="comment"></input>
+        <br>
+        <button type="submit" class="btn-add-comment" href="/event/{{event.id}}" >Add comment</input>
+        </form>
+    </div>
     </div>
     {% endblock %}
     

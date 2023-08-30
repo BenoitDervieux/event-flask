@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note')
     events = db.relationship('Events', secondary=user_events, back_populates='participants')
+    comments = db.relationship('Comment', backref='user', lazy=True)
     
 
 class Events(db.Model):
@@ -31,5 +32,13 @@ class Events(db.Model):
     date = db.Column(db.DateTime, nullable=False)
     place = db.Column(db.String(150), nullable=False)
     participants = db.relationship('User', secondary=user_events, back_populates='events')
+    comments = db.relationship('Comment', backref='event', lazy=True)
+    
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(1000), nullable=False)
+    date = db.Column(db.DateTime, default=func.now(), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
 
 
