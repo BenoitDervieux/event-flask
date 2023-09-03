@@ -14,7 +14,8 @@
     {% endfor %}
     <h3>Comments</h3>
     {% for comment in comments %}
-    <p>{{comment.description }} </p>
+        <p class="name-commentators">{{commentators[comment.user_id]}} - {{comment.date.strftime('%Y-%m-%d %H:%M:%S')}} </p>
+        <p class="comments"> {{comment.description }} </p>
     {% endfor %}
     <div class="div-comment">
         <form method="POST">

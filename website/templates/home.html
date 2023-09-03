@@ -4,11 +4,11 @@
 
 <ul class="" id="notes">
   {% for event in events %}
-  <li class="list-group-item" onClick="redirectToEvent({{event.id}})">
+  <li class="list-group-item" onClick="redirectToEvent({{event.id}})" style="z-index: 1;">
     <div class="cross-and-title">
     <h2>{{ event.name }}</h2>
     {% if user.id == event.organizer_id %}
-    <button type="button" class="close" onClick="deleteEvent({{ event.id }})">
+    <button type="button" class="close" onClick="deleteEvent({{ event.id }})" style="z-index: 2;">
       <span aria-hidden="true">&times;</span>
     </button>
     {% endif %}
