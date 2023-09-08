@@ -1,3 +1,8 @@
+body {
+  font-family: 'Open sans', sans-serif;
+}
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -158,10 +163,6 @@ h1 {
     width: 20px;
   }
 
-  .img {
-    max-height: 100px;
-  }
-
   .truncate-text {
     white-space: nowrap;
     overflow: hidden;
@@ -223,7 +224,8 @@ h1 {
     opacity: 1;
 }
 .p_scroll {
-  font-size: 24px;
+  font-size: 48px;
+  font-weight: 800;
   margin: 20px 0;
   opacity: 0.0;
   transition: opacity 0.5s;
@@ -241,4 +243,18 @@ h1 {
 
 .class_events {
   position: relative;
+}
+
+.high_title {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.join_us {
+  font-size: 96px;
+}
+
+.join_us_redirect {
+  text-decoration: none;
+  color: black;
 }
