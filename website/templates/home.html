@@ -1,10 +1,41 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Games Planned</h1>
+<h1 align="center">The creator's club</h1>
 
-<ul class="" id="notes">
+<div class="container_scroll">
+  <div class="text_speech">
+    <br>
+    <p class="p_scroll">Do you ever find yourself with a spark of inspiration?</p>
+    <p class="p_scroll"> a brilliant idea that's been simmering in the depths of your mind?</p> 
+    <p class="p_scroll">An idea so compelling, it stirs your soul.</p>
+    <p class="p_scroll">It has the potential to change the world, to leave your friends in awe, or to bring a radiant smile to your mother's face.</p>
+    <p class="p_scroll">You can feel it in your bones; this idea, this dream, holds tremendous promise.</p>
+    <p class="p_scroll">You've pictured it, you've visualized it, and you've even dared to dream it into existence.</p>
+    <p class="p_scroll">At times, it's the last thought on your mind before you drift into slumber,</p>
+    <p class="p_scroll">the muse that visits you during long drives, or the silent companion as water cascades over you in the shower.</p>
+    <p class="p_scroll">But what if, just what if, you took that first step?</p>
+    <p class="p_scroll">Imagine the exhilaration of meeting that first person who shares your passion,</p>
+    <p class="p_scroll">of delivering that initial pitch, and of receiving your very first feedback.</p>
+    <p class="p_scroll">It's a step into the unknown, a voyage of self-discovery.</p>
+    <p class="p_scroll">Now, picture this: What if you could connect with others who, like you, harbor a small dream waiting to be realized?</p>
+    <p class="p_scroll">People who've faced the same hurdles, battled through adversity, and emerged stronger.</p>
+    <p class="p_scroll">Or perhaps, individuals who could become your future partners, collaborators on your journey to greatness.</p>
+    <p class="p_scroll">That's where the Creator's Club comes in.</p>
+    <p class="p_scroll">We've envisioned a space, a vibrant community,dedicated to nurturing business ideas on our campus.</p>
+    <p class="p_scroll">It's a place where ambitious minds converge, where partnerships are forged, where networks expand,</p>
+    <p class="p_scroll">and where dreams take flight.</p>
+    <p class="p_scroll">So, if you carry a dream deep within you, if you possess the unwavering will to transform it into reality,</p>
+    <p class="p_scroll">we invite you to become a part of something extraordinary.</p>
+    <p class="p_scroll">Let's embark on this inspiring journey together.</p>
+    <p class="p_scroll">Join us now,</p>
+  </div>
+</div>
+<br>
+  <h2 align="center">Events Planned</h2>
+
+<ul class="class_events" id="notes">
   {% for event in events %}
-  <li class="list-group-item" onClick="redirectToEvent({{event.id}})" style="z-index: 1;">
+  <li class="list-group-item" onClick="redirectToEvent({{ event.id }})" style="z-index: 1;">
     <div class="cross-and-title">
     <h2>{{ event.name }}</h2>
     {% if user.id == event.organizer_id %}
@@ -52,4 +83,30 @@
     <a type="submit" class="btn btn-primary add-event-button" href="/createevent">Add Event</a>
   </div>
 </form>
+
+<script>
+  const textLines = document.querySelectorAll('.text_speech p');
+let prevScrollY = 0;
+
+function handleScroll() {
+    const scrollY = window.scrollY;
+
+    textLines.forEach((line, index) => {
+        const lineOffset = line.offsetTop;
+        const lineHeight = line.offsetHeight;
+        const opacity = Math.max(0, 1 - Math.abs(lineOffset - scrollY) / (lineHeight * 2));
+
+        line.style.opacity = opacity;
+        if (opacity > 0.5) {
+            line.classList.add('active');
+        } else {
+            line.classList.remove('active');
+        }
+    });
+
+    prevScrollY = scrollY;
+}
+
+window.addEventListener('scroll', handleScroll);
+</script>
 {% endblock %}

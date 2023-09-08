@@ -214,3 +214,31 @@ h1 {
     margin-top: 0px;
     margin-bottom: 8px;
   }
+
+  .text_speech {
+    text-align: center;
+  }
+
+  .active_scroll {
+    opacity: 1;
+}
+.p_scroll {
+  font-size: 24px;
+  margin: 20px 0;
+  opacity: 0.0;
+  transition: opacity 0.5s;
+}
+
+.container_scroll {
+  margin-top: 16px;
+  /*height: 100vh;*7
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
+  /*overflow: hidden;*/
+  position: relative;
+}
+
+.class_events {
+  position: relative;
+}
