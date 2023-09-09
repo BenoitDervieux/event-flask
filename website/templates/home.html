@@ -1,10 +1,33 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Games Planned</h1>
+<h1 align="center">THE CREATORS' CLUB</h1>
 
-<ul class="" id="notes">
+<div class="container_scroll">
+  <div class="text_speech">
+    <br>
+    <p class="p_scroll">Ever felt that spark of inspiration?</p>
+    <p class="p_scroll">a world-changing idea deep within you?</p> 
+    <p class="p_scroll">An idea so compelling, it stirs your soul?</p>
+    <p class="p_scroll">You've envisioned it,</p>
+    <p class="p_scroll">even dreamed it.</p>
+    <p class="p_scroll">But what if...</p>
+    <p class="p_scroll">You took that first step?</p>
+    <p class="p_scroll">We made a club for people like you</p>
+    <p class="p_scroll">dreaming to develop their project</p>
+    <p class="p_scroll">and making connexions on the way</p>
+    <p class="p_scroll">Welcome to the creators' club</p>
+    <p class="p_scroll">where ambitious minds unit</p>
+    <p class="p_scroll">to turn your dreams into achievments</p>
+    <br>
+    <p class="p_scroll join_us"><a class="join_us_redirect" href="www.youtube.com">JOIN US NOW</a></p>
+  </div>
+</div>
+<br>
+  <h2 align="center">Events Planned</h2>
+
+<ul class="class_events" id="notes">
   {% for event in events %}
-  <li class="list-group-item" onClick="redirectToEvent({{event.id}})" style="z-index: 1;">
+  <li class="list-group-item" onClick="redirectToEvent({{ event.id }})" style="z-index: 1;">
     <div class="cross-and-title">
     <h2>{{ event.name }}</h2>
     {% if user.id == event.organizer_id %}
@@ -52,4 +75,30 @@
     <a type="submit" class="btn btn-primary add-event-button" href="/createevent">Add Event</a>
   </div>
 </form>
+
+<script>
+  const textLines = document.querySelectorAll('.text_speech p');
+let prevScrollY = 0;
+
+function handleScroll() {
+    const scrollY = window.scrollY;
+
+    textLines.forEach((line, index) => {
+        const lineOffset = line.offsetTop;
+        const lineHeight = line.offsetHeight;
+        const opacity = Math.max(0, 1 - Math.abs(lineOffset - scrollY) / (lineHeight * 2));
+
+        line.style.opacity = opacity;
+        if (opacity > 0.5) {
+            line.classList.add('active');
+        } else {
+            line.classList.remove('active');
+        }
+    });
+
+    prevScrollY = scrollY;
+}
+
+window.addEventListener('scroll', handleScroll);
+</script>
 {% endblock %}

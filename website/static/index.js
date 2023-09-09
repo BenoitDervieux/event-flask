@@ -6,3 +6,5 @@ function deleteEvent(eventId) {
     window.location.href = "/";
   });
   }
+
+
