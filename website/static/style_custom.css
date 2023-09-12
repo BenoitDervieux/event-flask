@@ -1,5 +1,8 @@
 body {
   font-family: 'Open sans', sans-serif;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbar {
@@ -8,8 +11,9 @@ body {
     align-items: center;
     color: black;
     padding: 10px 20px;
-    margin: 1em;
     margin: 0px;
+    border-bottom: 1px solid #dee2e6; /* Gray solid bottom border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Drop shadow */
 }
 
 .navbar-left {
@@ -268,4 +272,5 @@ h1 {
 
 .div_logo {
   width: 100%;
+  margin-top: 64px;
 }
